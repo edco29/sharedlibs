@@ -1,7 +1,7 @@
 class jenkinsfileUtil implements Serializable {
 
   
-  def mvnHome= "usr"
+  def mvnHome= "/usr"
   /*
   * Get information from the main pipeline
   */
