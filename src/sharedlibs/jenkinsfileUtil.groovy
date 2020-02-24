@@ -8,12 +8,12 @@ class jenkinsfileUtil implements Serializable {
   //def docker
   def type
   jenkinsfileUtil(steps,script,String type = '') {
-      def remoteConfigs=script.scm.getUserRemoteConfigs()
+    /*  def remoteConfigs=script.scm.getUserRemoteConfigs()
       for (Object remoteConfig : remoteConfigs) {
         currentCredentialsId= remoteConfig.getCredentialsId()
         steps.echo "CurrentCredentialsId for ${remoteConfig} --> ${currentCredentialsId}"
       }
-
+*/
       this.steps = steps
       this.script = script
       steps.echo "steps: ${steps}"
