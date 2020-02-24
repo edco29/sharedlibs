@@ -1,5 +1,7 @@
 class jenkinsfileUtil implements Serializable {
 
+  
+  def mvnHome= "usr"
   /*
   * Get information from the main pipeline
   */
@@ -22,12 +24,6 @@ class jenkinsfileUtil implements Serializable {
       this.type=type
   }
 
-
-
-
-
-
-def mvnHome
 
 /*
   * This method compile the doce from maven
