@@ -1,4 +1,31 @@
-class JenkinsfileUtil implements Serializable {
+class jenkinsfileUtil implements Serializable {
+
+  /*
+  * Get information from the main pipeline
+  */
+  def steps
+  def script
+  //def docker
+  def type
+  jenkinsfileUtil(steps,script,String type = '') {
+      def remoteConfigs=script.scm.getUserRemoteConfigs()
+      for (Object remoteConfig : remoteConfigs) {
+        currentCredentialsId= remoteConfig.getCredentialsId()
+        steps.echo "CurrentCredentialsId for ${remoteConfig} --> ${currentCredentialsId}"
+      }
+
+      this.steps = steps
+      this.script = script
+      steps.echo "steps: ${steps}"
+      steps.echo "script: ${script}"
+    //  docker=new Docker(this.script)
+      this.type=type
+  }
+
+
+
+
+
 
 def mvnHome
 
