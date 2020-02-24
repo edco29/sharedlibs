@@ -1,7 +1,7 @@
 class jenkinsfileUtil implements Serializable {
 
   
-  def mvnHome= "/usr"
+  //def mvnHome= "/usr"
   /*
   * Get information from the main pipeline
   */
@@ -30,12 +30,14 @@ class jenkinsfileUtil implements Serializable {
   */
   def buildMaven(String buildParameters = '', boolean failNever=true) {
      // Run the maven build
-     steps.sh "'${mvnHome}/bin/mvn' compile test-compile"
+     //steps.sh "'${mvnHome}/bin/mvn' compile test-compile"
+     steps.sh "mvn compile test-compile"
      def failNeverParam=""
      if(failNever){
          failNeverParam="--fail-never"
      }
-     steps.sh "'${mvnHome}/bin/mvn' ${failNeverParam} -DskipITs ${buildParameters} install"
+    // steps.sh "'${mvnHome}/bin/mvn' ${failNeverParam} -DskipITs ${buildParameters} install"
+       steps.sh "mvn ${failNeverParam} -DskipITs ${buildParameters} install"
      try {
          steps.step( [ $class: 'JacocoPublisher' ] )
      }
