@@ -47,8 +47,9 @@ class jenkinsfileUtil implements Serializable {
   }
   
   def deployMaven (){
- steps.sh " docker build -t my-java-app ."
-    steps.sh "docker run -d -p 9090:9090 --name my-running-app-${buildTimestamp} my-java-app"
+  steps.sh " docker build -t my-java-app ."
+  steps.sh " docker rm -f my-running-app "
+  steps.sh "docker run -d -p 9090:9090 --name my-running-app my-java-app"
 
   }
 
