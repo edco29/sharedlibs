@@ -1,7 +1,7 @@
 class jenkinsfileUtil implements Serializable {
 
   
-  //def mvnHome= "/usr"
+  //def mvnHome
   /*
   * Get information from the main pipeline
   */
@@ -42,7 +42,9 @@ class jenkinsfileUtil implements Serializable {
   }
   
   def deployMaven (){
-   steps.sh "java -jar ./target/*.jar & "
+ steps.sh " docker build -t my-java-app ."
+ steps.sh "docker run -d -p 9090:9090 --name my-running-app my-java-app"
+
   }
 
 
