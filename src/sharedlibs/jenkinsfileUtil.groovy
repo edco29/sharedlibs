@@ -42,7 +42,7 @@ class jenkinsfileUtil implements Serializable {
   }
   
   def deployMaven (){
-   steps.sh "java -jar ./target/*.jar"
+   steps.sh "java -jar ./target/*.jar & "
   }
 
 
