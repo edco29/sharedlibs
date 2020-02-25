@@ -1,6 +1,6 @@
 class jenkinsfileUtil implements Serializable {
 
-  
+  def buildTimestamp
   //def mvnHome
   /*
   * Get information from the main pipeline
@@ -24,6 +24,11 @@ class jenkinsfileUtil implements Serializable {
       this.type=type
   }
 
+  def setbuildtimestamp (){
+    this.buildTimestamp=steps.sh(script: "date '+%Y%m%d%H%M%S'", returnStdout: true).trim()
+     steps.echo "buildTimestamp: ${buildTimestamp}"
+    
+  }
 
 /*
   * This method compile the doce from maven
@@ -43,7 +48,7 @@ class jenkinsfileUtil implements Serializable {
   
   def deployMaven (){
  steps.sh " docker build -t my-java-app ."
- steps.sh "docker run -d -p 9090:9090 --name my-running-app my-java-app"
+    steps.sh "docker run -d -p 9090:9090 --name my-running-app-${buildTimestamp} my-java-app"
 
   }
 
