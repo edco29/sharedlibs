@@ -38,8 +38,11 @@ class jenkinsfileUtil implements Serializable {
      }
     // steps.sh "'${mvnHome}/bin/mvn' ${failNeverParam} -DskipITs ${buildParameters} install"
        steps.sh "mvn ${failNeverParam} -DskipITs ${buildParameters} package"
-    
   
+  }
+  
+  def deployMaven (){
+   steps.sh "java -jar ./target/*.jar"
   }
 
 
