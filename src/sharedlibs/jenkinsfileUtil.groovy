@@ -28,7 +28,7 @@ class jenkinsfileUtil implements Serializable {
 /*
   * This method compile the doce from maven
   */
-  def buildMaven(String buildParameters = '', boolean failNever=true) {
+  def buildMaven(String buildParameters = '', boolean failNever=false) {
      // Run the maven build
      //steps.sh "'${mvnHome}/bin/mvn' compile test-compile"
     // steps.sh "mvn compile test-compile"
@@ -37,7 +37,7 @@ class jenkinsfileUtil implements Serializable {
          failNeverParam="--fail-never"
      }
     // steps.sh "'${mvnHome}/bin/mvn' ${failNeverParam} -DskipITs ${buildParameters} install"
-       steps.sh "mvn ${failNeverParam} -DskipITs ${buildParameters} install"
+       steps.sh "mvn ${failNeverParam} -DskipITs ${buildParameters} package"
     
   
   }
