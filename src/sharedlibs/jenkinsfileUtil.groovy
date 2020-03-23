@@ -22,6 +22,7 @@ class jenkinsfileUtil implements Serializable {
        steps.sh "mvn --fail-never -DskipITs ${buildParameters} package"
   }
   
+  /* Implement docker first in GCompute */
   def deployMaven (){
   steps.sh " docker build -t my-java-app ."
   steps.sh " docker rm -f my-running-app "
